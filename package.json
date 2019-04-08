@@ -1,0 +1,26 @@
+{
+  "name": "0-project",
+  "version": "1.0.0",
+  "description": "\"A web directory of reimbursement requests\"",
+  "main": "index.js",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "excess": "^0.2.6",
+    "express": "^4.16.4",
+    "nodemon": "^1.18.10"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/1904-javanodereact-blake/project-0-api-FunderJM.git"
+  },
+  "author": "Jerry M. Funderburk",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/1904-javanodereact-blake/project-0-api-FunderJM/issues"
+  },
+  "homepage": "https://github.com/1904-javanodereact-blake/project-0-api-FunderJM#readme"
+}
