@@ -1,5 +1,6 @@
 import { User } from "./model/user";
 import { Spaceship } from "./model/spaceship";
+import { role } from "./model/role";
 
 export let users: User[] = [
   new User(1, 'BigE', 'Gold', 'The Emporer', 'Ofmankind', 'BigE@empire.com', 'Emperor'),
@@ -19,3 +20,9 @@ export let spaceships: Spaceship[] = [
   new Spaceship(6, 6, 'Serrenity', 5000, 5000, 'its a ship'),
   new Spaceship(7, 3, 'Yes', 5000, 5000, 'its a ship'),
 ];
+
+export let roles: role[] =[
+  new role(1, 'Emperor'),
+  new role(2, 'Primarch'),
+  new role(3, 'First Captain')
+]
