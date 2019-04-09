@@ -74,7 +74,7 @@ userRouter.post('/login', (req, res) => {
   if (user) {
     // attach the user data to the session object
     req.session.user = user;
-    res.end();
+    res.send(`Welcom ${username}`);
   } else {
     res.sendStatus(401);
   }
