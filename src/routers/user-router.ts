@@ -15,7 +15,7 @@ export const userRouter = express.Router();
  * endpoint: /users
  */
 userRouter.get('', [
-  authMiddleware(['admin']),
+  authMiddleware(['Emperor']),
   (req, res) => {
     console.log('retreiving all users')
     res.json(users);
@@ -74,7 +74,7 @@ userRouter.post('/login', (req, res) => {
   if (user) {
     // attach the user data to the session object
     req.session.user = user;
-    res.send(`Welcom ${username}`);
+    res.send(`Welcome ${username}`);
   } else {
     res.sendStatus(401);
   }

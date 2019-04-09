@@ -2,8 +2,8 @@ import { User } from "./model/user";
 import { Spaceship } from "./model/spaceship";
 
 export let users: User[] = [
-  new User(1, 'admin', 'pass', 'blake', 'Kruppa', 'bkruppa@rev.com', 'admin'),
-  new User(2, 'Bradley', 'pass', 'Bradley'),
+  new User(1, 'BigE', 'Gold', 'The Emporer', 'Ofmankind', 'BigE@empire.com', 'Emperor'),
+  new User(2, 'TheLion', 'pass', 'Lion', 'Eljohnson', 'Lion@Dang.com', 'Primarch'),
   new User(3, 'Shahram', 'pass', 'Shahram'),
   new User(4, 'Pj', 'pass', 'Pj'),
   new User(5, 'Danae', 'pass', 'Danae'),
