@@ -5,7 +5,7 @@ export function authMiddleware (roles: string[]) {
     if(isAuthorized) {
       next();
     } else {
-      res.sendStatus(403);
+      res.sendStatus(401);
     }
   }
 } 
