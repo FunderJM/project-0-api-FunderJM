@@ -3,8 +3,8 @@ import { Spaceship } from "./model/spaceship";
 import { role } from "./model/role";
 
 export let users: User[] = [
-  new User(1, 'BigE', 'Gold', 'The Emporer', 'Ofmankind', 'BigE@empire.com', 'Emperor'),
-  new User(2, 'TheLion', 'pass', 'Lion', 'Eljohnson', 'Lion@Dang.com', 'Primarch'),
+  new User(1, 'BigE', 'Gold', 'The Emporer', 'Ofmankind', 'BigE@empire.com', 1),
+  new User(2, 'TheLion', 'pass', 'Lion', 'Eljohnson', 'Lion@Dang.com', 2),
   new User(3, 'Shahram', 'pass', 'Shahram'),
   new User(4, 'Pj', 'pass', 'Pj'),
   new User(5, 'Danae', 'pass', 'Danae'),
