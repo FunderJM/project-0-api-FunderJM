@@ -1,4 +1,4 @@
-import { reimbursementstatus } from "./model/reimbursementstatus";
+import { reimbursementstatus } from "./reimbursementstatus";
 
 
 export let reStatus: reimbursementstatus[] = [
