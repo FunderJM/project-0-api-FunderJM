@@ -1,6 +1,4 @@
-import { SqlRole } from "../dto/sql-role.dto";
+import { SqlRole } from '../dto/sql-role.dto';
 
-
-export function convertSqlRole(role: SqlRole) {
-        
+export function convertSqlRole( role: SqlRole) {
 }
