@@ -1,5 +1,7 @@
-import { Pool, PoolClient } from "pg";
+import { PoolClient } from "pg";
 import { connectionPool } from "./index.dao";
+import { convertSqlRole } from "../utility/sql-role-converter";
+import { convertSqlUser } from "../utility/sql-user-converter";
 
 
 export async function findByUsernameAndPassword(username: string, password: string){
@@ -12,8 +14,8 @@ export async function findByUsernameAndPassword(username: string, password: stri
         const result = await client.query(queryString, [username, password]);
         const user = result.rows[0];
         if(user){
-            const convertedUser = convertedSqlUser(user);
-            convertedUser.role = convertSqlRole(user);
+            const convertedUser = convertSqlUser(user);
+            convertedSqlUser.role = convertSqlRole(user);
             return convertedUser;
         } else {
             return undefined;
