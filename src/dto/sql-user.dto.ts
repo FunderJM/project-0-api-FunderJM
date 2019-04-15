@@ -1,3 +1,4 @@
+import { Role } from "../model/roles";
 
 export class SqlUser {
   user_id = 0;
@@ -5,5 +6,6 @@ export class SqlUser {
   user_password = '';
   firstname = '';
   lastname = '';
-  user_role = 'employee';
+  email = '';
+  role = Role;
 }

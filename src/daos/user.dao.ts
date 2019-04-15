@@ -13,9 +13,9 @@ export async function findByUsernameAndPassword(username: string, password: stri
             WHERE username = $1 AND emppassword = $2`;
         const result = await client.query(queryString, [username, password]);
         const user = result.rows[0];
-        if(user){
+        if (user) {
             const convertedUser = convertSqlUser(user);
-            convertedSqlUser.role = convertSqlRole(user);
+            convertedSqlUser.id = convertSqlRole(user);
             return convertedUser;
         } else {
             return undefined;

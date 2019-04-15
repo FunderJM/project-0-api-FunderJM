@@ -1,10 +1,10 @@
 
 export class SqlReimbursement {
-    reimbursementID = 0;
+    reimbursementId = 0;
     author = 0;
     amount = 0;
-    dateSubmitted = '';
-    dateResolved = '';
+    dateSubmitted = 0;
+    dateResolved = 0;
     description = '';
     resolver = 0;
     status = 0;

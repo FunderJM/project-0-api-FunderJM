@@ -4,7 +4,7 @@ export class Role {
 
 
     constructor(roleId = 0,
-    role = '') {
+    emprole = '') {
         this.roleId = roleId;
         this.emprole = emprole;
     }
