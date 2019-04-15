@@ -6,7 +6,7 @@ import { convertSqlUser } from "../utility/sql-user-converter";
 
 export async function findByUsernameAndPassword(username: string, password: string){
     let client: PoolClient;
-    try{
+    try {
         client = await connectionPool.connect();
         const queryString = `SELECT * FROM Project-0.employee as us
             INNER JOIN Project-0.sysrole as ro ON  (us.emprole = ro.roleid)

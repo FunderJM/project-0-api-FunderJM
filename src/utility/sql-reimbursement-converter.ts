@@ -1,7 +1,7 @@
 import { SqlReimbursement } from "../dto/sql-reimbursement.dto";
-import { reimbursement } from "../model/reimbursement";
+import { reImbursement } from "../model/reimbursement";
 
 
 export function convertSqlReimbursement(reimburse: SqlReimbursement) {
-    return new reimburse ( reimbursement.reimbursementId, reimbursement.author, reimbursement.amount, reimbursement.dateSubmitted, reimbursement.description, reimbursement.resolver, reimbursement.status, reimbursement.type);
+    return new reimburse ( reImbursement.reimbursementid, reImbursement.author, reImbursement.amount, reImbursement.dateSubmitted, reImbursement.dateResolved, reImbursement.description, reImbursement.resolver, reImbursement.status, reImbursement.type);
 }
