@@ -12,8 +12,8 @@ userRouter.get('', [
 ]);
 
 userRouter.get('/:id', (req, res) => {
-    const id: number = +req.User.userId
-    const employee = User.find(u => u.userId === id);
+    const id: number = +req.params.userId;
+    const employee = params.find(u => u.userId === id);
     if (employee) {
         res.json(employee);
     } else {
