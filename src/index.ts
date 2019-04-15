@@ -7,7 +7,7 @@ const app = express();
 
 app.use((req, res, next) => {
   console.log(`request made with url: ${req.url} and method: ${req.method}`);
-  const headers = req.rawHeaders; 
+  const headers = req.rawHeaders;
   console.log(headers);
   next();
 });

@@ -5,7 +5,7 @@ import { User } from '../model/user';
 export const userRouter = express.Router();
 
 userRouter.get('', [
-    authMiddleware(['Admin', 'Finance Manager']),
+    authMiddleware(['']),
     (req, res) => {
         res.json(User);
     }
@@ -13,7 +13,7 @@ userRouter.get('', [
 
 userRouter.get('/:id', (req, res) => {
     const id: number = +req.params.userId;
-    const employee = params.find(u => u.userId === id);
+    const employee = req.params.find(u => u.userId === id);
     if (employee) {
         res.json(employee);
     } else {
