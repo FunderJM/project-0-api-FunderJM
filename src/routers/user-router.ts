@@ -1,23 +1,26 @@
 import express from 'express';
 import { authMiddleware } from '../middleware/auth.middleware';
-import { findByUsernameAndPassword } from '../daos/user.dao';
+import { findByUsernameAndPassword, allUsers, findByUserId } from '../daos/user.dao';
 
 export const userRouter = express.Router();
 
 userRouter.get('', [
     authMiddleware(['Finance Manager']),
-    (req, res) => {
-        res.json(`SELECT * FROM project0.employee`);
+    async (req, res) => {
+        const result = await allUsers();
+        res.json(result.rows);
     }
 ]);
 
-userRouter.get('/:id', (req, res) => {
-    const id: number = +req.params.userId;
-    const employee = req.params.find(u => u.userId === id);
+userRouter.get('/:id', authMiddleware(['Finance Manager']), async (req, res) => {
+    const id: number = +req.params.id;
+    console.log(id);
+    const employee = await findByUserId(id);
     if (employee) {
         res.status(200).json(employee);
     } else {
         res.sendStatus(404);
+        console.log(`t5`);
     }
 });
 
