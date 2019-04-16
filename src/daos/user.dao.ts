@@ -8,8 +8,8 @@ export async function findByUsernameAndPassword(username: string, password: stri
     let client: PoolClient;
     try {
         client = await connectionPool.connect();
-        const queryString = `SELECT * FROM Project-0.employee as us
-            INNER JOIN Project-0.sysrole as ro ON  (us.emprole = ro.roleid)
+        const queryString = `SELECT * FROM project0.employee as us
+            INNER JOIN project0.sysrole as ro ON  (us.emprole = ro.roleid)
             WHERE username = $1 AND emppassword = $2`;
         const result = await client.query(queryString, [username, password]);
         const user = result.rows[0];

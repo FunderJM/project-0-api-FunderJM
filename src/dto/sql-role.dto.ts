@@ -1,5 +1,5 @@
 
 export class SqlRole {
-  id = 0;
-  emprole = '';
+  roleid = 0;
+  sysrole = '';
 }
