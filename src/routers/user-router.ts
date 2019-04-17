@@ -14,13 +14,11 @@ userRouter.get('', [
 
 userRouter.get('/:id', authMiddleware(['Finance Manager']), async (req, res) => {
     const id: number = +req.params.id;
-    console.log(id);
     const employee = await findByUserId(id);
     if (employee) {
         res.status(200).json(employee);
     } else {
         res.sendStatus(404);
-        console.log(`t5`);
     }
 });
 

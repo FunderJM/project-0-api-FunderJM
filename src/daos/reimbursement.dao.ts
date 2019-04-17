@@ -1,5 +1,5 @@
-import { PoolClient } from "pg";
-import { connectionPool } from "./index.dao";
+import { PoolClient } from 'pg';
+import { connectionPool } from './index.dao';
 
 
 export async function findAllRequestByStatusId(status: number) {
@@ -30,6 +30,24 @@ export async function findAllRequestByUserId(userId: number) {
         const result = await client.query(queryString, [userId]);
         const reuser = result.rows[0];
         return reuser;
+    } catch (err) {
+        console.log(err);
+        return undefined;
+    } finally {
+        client && client.release();
+    }
+}
+
+export async function createNewRequest(author: number, amount: number, datesubmitted: number, description: string, type: number) {
+    let client: PoolClient;
+
+    try {
+        client = await connectionPool.connect();
+        const queryString = `INSERT INTO reimbursement(author, amount, datesubmitted, description, status, type)
+        VALUES ($1, $2, $3, $4, 1, $5)`;
+        const result = await client.query(queryString, [author, amount, datesubmitted, description, type]);
+        const reimburse = result.rows[0];
+        return reimburse;
     } catch (err) {
         console.log(err);
         return undefined;
