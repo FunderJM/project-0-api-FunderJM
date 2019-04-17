@@ -43,7 +43,7 @@ export async function createNewRequest(author: number, amount: number, datesubmi
 
     try {
         client = await connectionPool.connect();
-        const queryString = `INSERT INTO reimbursement(author, amount, datesubmitted, description, status, type)
+        const queryString = `INSERT INTO project0.reimbursement(author, amount, datesubmitted, description, status, type)
         VALUES ($1, $2, $3, $4, 1, $5)`;
         const result = await client.query(queryString, [author, amount, datesubmitted, description, type]);
         const reimburse = result.rows[0];
@@ -56,15 +56,15 @@ export async function createNewRequest(author: number, amount: number, datesubmi
     }
 }
 
-export async function updateRequest(reimbursementid: number, dateresolved: number, resolver: number) {
+export async function updateRequest(reimbursementid: number, dateresolved: number, resolver: number, status: number) {
     let client: PoolClient;
 
     try {
         client = await connectionPool.connect();
-        const queryString = `UPDATE TABLE reimbursement
-        SET dateresolved = $2, resolver = $3
+        const queryString = `UPDATE TABLE project0.reimbursement
+        SET dateresolved = $2, resolver = $3, status = $4
         WHERE reimbursementid = $1;`;
-        const result = await client.query(queryString, [reimbursementid, dateresolved, resolver]);
+        const result = await client.query(queryString, [reimbursementid, dateresolved, resolver, status]);
         const reimburse = result.rows[0];
         return reimburse;
     } catch (err) {

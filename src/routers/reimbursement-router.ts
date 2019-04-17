@@ -42,7 +42,7 @@ reimbursementRouter.patch(``, async (req, res) => {
     const reimburseId = req.body.reimbursementid;
     const dateresolved = req.body.dateresolved;
     const resolver = req.body.resolver;
-    const updatereq = await updateRequest(reimburseId, dateresolved, resolver);
+    const updatereq = await updateRequest(reimburseId, dateresolved, resolver, status);
     if (updatereq) {
         res.status(200).json(updatereq);
     } else {
