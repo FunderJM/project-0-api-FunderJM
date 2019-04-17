@@ -1,5 +1,5 @@
 import express from 'express';
-import { findAllRequestByUserId, createNewRequest } from '../daos/reimbursement.dao';
+import { findAllRequestByUserId, createNewRequest, updateRequest } from '../daos/reimbursement.dao';
 export const reimbursementRouter = express.Router();
 
 reimbursementRouter.get(`/author/userId/:userId`, async (req, res) => {
@@ -24,7 +24,7 @@ reimbursementRouter.get(`/status/:statusId`, async (req, res) => {
     }
 });
 
-reimbursementRouter.post(`/reimbursements`,[ async (req, res) => {
+reimbursementRouter.post(`/reimbursements`, [ async (req, res) => {
     const reimburseId = req.body.userId;
     const reimburseAmount = req.body.amount;
     const todaysDate = req.body.datesubmitted;
@@ -37,3 +37,15 @@ reimbursementRouter.post(`/reimbursements`,[ async (req, res) => {
         res.sendStatus(404);
     }
 }]);
+
+reimbursementRouter.patch(``, async (req, res) => {
+    const reimburseId = req.body.reimbursementid;
+    const dateresolved = req.body.dateresolved;
+    const resolver = req.body.resolver;
+    const updatereq = await updateRequest(reimburseId, dateresolved, resolver);
+    if (updatereq) {
+        res.status(200).json(updatereq);
+    } else {
+        res.sendStatus(404);
+    }
+});

@@ -55,3 +55,22 @@ export async function createNewRequest(author: number, amount: number, datesubmi
         client && client.release();
     }
 }
+
+export async function updateRequest(reimbursementid: number, dateresolved: number, resolver: number) {
+    let client: PoolClient;
+
+    try {
+        client = await connectionPool.connect();
+        const queryString = `UPDATE TABLE reimbursement
+        SET dateresolved = $2, resolver = $3
+        WHERE reimbursementid = $1;`;
+        const result = await client.query(queryString, [reimbursementid, dateresolved, resolver]);
+        const reimburse = result.rows[0];
+        return reimburse;
+    } catch (err) {
+        console.log(err);
+        return undefined;
+    } finally {
+        client && client.release();
+    }
+}
