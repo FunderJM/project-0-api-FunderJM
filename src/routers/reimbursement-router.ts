@@ -14,7 +14,7 @@ reimbursementRouter.get(`/author/userId/:userId`, async (req, res) => {
 });
 
 reimbursementRouter.get(`/status/:statusId`, async (req, res) => {
-    const statid = +req.params.statusid;
+    const statid = +req.params.statusId;
     console.log(statid);
     const employeerequest = await findAllRequestByUserId(statid);
     if (employeerequest) {
@@ -42,7 +42,8 @@ reimbursementRouter.patch(``, async (req, res) => {
     const reimburseId = req.body.reimbursementid;
     const dateresolved = req.body.dateresolved;
     const resolver = req.body.resolver;
-    const updatereq = await updateRequest(reimburseId, dateresolved, resolver, status);
+    const stat = req.body.status;
+    const updatereq = await updateRequest(reimburseId, dateresolved, resolver, stat);
     if (updatereq) {
         res.status(200).json(updatereq);
     } else {
