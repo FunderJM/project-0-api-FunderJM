@@ -2,8 +2,9 @@ import express from 'express';
 import { findAllRequestByUserId, createNewRequest } from '../daos/reimbursement.dao';
 export const reimbursementRouter = express.Router();
 
-reimbursementRouter.get(`/reimbursements/author/userId/:userId`, async (req, res) => {
-    const id: number = +req.params.userid;
+reimbursementRouter.get(`/author/userId/:userId`, async (req, res) => {
+    const id = +req.params.userId;
+    console.log(id);
     const employeerequest = await findAllRequestByUserId(id);
     if (employeerequest) {
         res.status(200).json(employeerequest);
@@ -12,9 +13,10 @@ reimbursementRouter.get(`/reimbursements/author/userId/:userId`, async (req, res
     }
 });
 
-reimbursementRouter.get(`/reimbursements/status/:statusId`, async (req, res) => {
-    const id: number = +req.params.statusid;
-    const employeerequest = await findAllRequestByUserId(id);
+reimbursementRouter.get(`/status/:statusId`, async (req, res) => {
+    const statid = +req.params.statusid;
+    console.log(statid);
+    const employeerequest = await findAllRequestByUserId(statid);
     if (employeerequest) {
         res.status(200).json(employeerequest);
     } else {
@@ -22,7 +24,7 @@ reimbursementRouter.get(`/reimbursements/status/:statusId`, async (req, res) => 
     }
 });
 
-reimbursementRouter.post(`/reimbursements`, async (req, res) => {
+reimbursementRouter.post(`/reimbursements`,[ async (req, res) => {
     const reimburseId = req.body.userId;
     const reimburseAmount = req.body.amount;
     const todaysDate = req.body.datesubmitted;
@@ -34,4 +36,4 @@ reimbursementRouter.post(`/reimbursements`, async (req, res) => {
     } else {
         res.sendStatus(404);
     }
-});
+}]);

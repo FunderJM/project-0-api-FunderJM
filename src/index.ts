@@ -2,6 +2,7 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import { userRouter } from './routers/user-router';
 import { sessionMiddleware } from './middleware/session.middleware';
+import { reimbursementRouter } from './routers/reimbursement-router';
 
 const app = express();
 
@@ -20,6 +21,7 @@ app.use(sessionMiddleware);
  * Register Routers
  */
 app.use('/users', userRouter);
+app.use('/reimbursements', reimbursementRouter);
 
 app.listen(8080);
 console.log('end of index');
