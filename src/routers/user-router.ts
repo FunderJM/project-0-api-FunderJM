@@ -12,7 +12,7 @@ userRouter.get('', [
     }
 ]);
 
-userRouter.get('/:id',authMiddleware(['Finance Manager']), async (req, res) => {
+userRouter.get('/:id', authMiddleware(['Finance Manager']), async (req, res) => {
     const id: number = +req.params.id;
     const employee = await findByUserId(id);
     if (employee) {
