@@ -10,7 +10,7 @@ export async function findAllRequestByStatusId(status: number) {
         INNER JOIN project0.reimbursementstatus as sta ON (re.status = sta.statusid)
         WHERE re.status = $1 ORDER BY re.datesubmitted ASC;`;
         const result = await client.query(queryString, [status]);
-        const restat = result.rows[0];
+        const restat = result.rows;
         return restat;
     } catch (err) {
         console.log(err);
@@ -28,7 +28,7 @@ export async function findAllRequestByUserId(userId: number) {
         INNER JOIN project0.employee as emp ON (re.author = emp.userid)
         WHERE re.author = $1 ORDER BY re.datesubmitted ASC;`;
         const result = await client.query(queryString, [userId]);
-        const reuser = result.rows[0];
+        const reuser = result.rows;
         return reuser;
     } catch (err) {
         console.log(err);
