@@ -1,5 +1,5 @@
 import express from 'express';
-import { findAllRequestByUserId, createNewRequest, updateRequest } from '../daos/reimbursement.dao';
+import { findAllRequestByUserId, findAllRequestByStatusId, createNewRequest, updateRequest } from '../daos/reimbursement.dao';
 export const reimbursementRouter = express.Router();
 
 reimbursementRouter.get(`/author/userId/:userId`, async (req, res) => {
@@ -16,7 +16,7 @@ reimbursementRouter.get(`/author/userId/:userId`, async (req, res) => {
 reimbursementRouter.get(`/status/:statusId`, async (req, res) => {
     const statid = +req.params.statusId;
     console.log(statid);
-    const employeerequest = await findAllRequestByUserId(statid);
+    const employeerequest = await findAllRequestByStatusId(statid);
     if (employeerequest) {
         res.status(200).json(employeerequest);
     } else {

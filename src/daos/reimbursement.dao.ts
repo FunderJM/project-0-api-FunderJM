@@ -43,8 +43,8 @@ export async function createNewRequest(author: number, amount: number, datesubmi
 
     try {
         client = await connectionPool.connect();
-        const queryString = `INSERT INTO project0.reimbursement(author, amount, datesubmitted, description, status, type)
-        VALUES ($1, $2, $3, $4, 1, $5)`;
+        const queryString = `INSERT INTO project0.reimbursement(author, amount, datesubmitted, description, type)
+        VALUES ($1, $2, $3, $4, $5)`;
         const result = await client.query(queryString, [author, amount, datesubmitted, description, type]);
         const reimburse = result.rows[0];
         return reimburse;
