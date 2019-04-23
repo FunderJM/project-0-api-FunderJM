@@ -69,6 +69,6 @@ export async function allUsers() {
     }
 }
 
-export async function updateuser(userId: number, username: string, password: string, firstname: string, lastname: string, email: string, emprole: number){
-    let client: PoolClient;
-}
+// export async function updateuser(userId: number, username: string, password: string, firstname: string, lastname: string, email: string, emprole: number){
+//     let client: PoolClient;
+// }

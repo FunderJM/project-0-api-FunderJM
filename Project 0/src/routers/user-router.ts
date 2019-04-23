@@ -2,7 +2,7 @@ import express from 'express';
 import { authMiddleware } from '../middleware/auth.middleware';
 import { findByUsernameAndPassword, allUsers, findByUserId } from '../daos/user.dao';
 import { User } from '../model/user';
-import bodyParser = require('body-parser');
+// import bodyParser = require('body-parser');
 
 export const userRouter = express.Router();
 
@@ -45,12 +45,12 @@ userRouter.post('/login', async (req, res) => {
 
 userRouter.patch('', async (req, res) => {
     const bod = req.body;
-    const tempUser = new User(bod.userid, undefined, undefined, undefined, undefined, undefined, undefined, undefined);
+    const tempUser = new User(bod.userid, undefined, undefined, undefined, undefined, undefined, undefined);
     for (const field in tempUser) {
         if (bod[field] != undefined) {
             tempUser[field] = bod[field];
         }
-    } if (tempUser.userid != undefined) {
+    } if (tempUser.userId != undefined) {
         const updateReturn = await updateUser(tempUser);
         if (updateReturn) {
             res.status(202);
