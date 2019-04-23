@@ -68,3 +68,7 @@ export async function allUsers() {
         client && client.release();
     }
 }
+
+export async function updateuser(userId: number, username: string, password: string, firstname: string, lastname: string, email: string, emprole: number){
+    let client: PoolClient;
+}

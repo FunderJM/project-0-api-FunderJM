@@ -25,12 +25,12 @@ reimbursementRouter.get(`/status/:statusId`, async (req, res) => {
 });
 
 reimbursementRouter.post(`/reimbursements`, [ async (req, res) => {
-    const reimburseId = req.body.userId;
+    const author = req.body.author;
     const reimburseAmount = req.body.amount;
     const todaysDate = req.body.datesubmitted;
     const reimburseDescr = req.body.description;
     const reimburseType = req.body.type;
-    const employeereimburse = await createNewRequest(reimburseId, reimburseAmount, todaysDate, reimburseDescr, reimburseType);
+    const employeereimburse = await createNewRequest(author,  reimburseAmount, todaysDate, reimburseDescr, reimburseType);
     if (employeereimburse) {
         res.status(200).json(employeereimburse);
     } else {
