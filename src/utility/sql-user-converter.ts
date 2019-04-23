@@ -1,5 +1,5 @@
 import { SqlUser } from '../dto/sql-user.dto';
-import { User } from '../model/user';
+import { User } from '../../model/user';
 
 
 export function convertSqlUser(user: SqlUser) {

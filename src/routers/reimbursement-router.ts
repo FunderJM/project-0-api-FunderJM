@@ -1,5 +1,5 @@
 import express from 'express';
-import { findAllRequestByUserId, findAllRequestByStatusId, createNewRequest, updateRequest } from '../daos/reimbursement.dao';
+import { findAllRequestByUserId, findAllRequestByStatusId, createNewRequest, updateRequest } from '../../daos/reimbursement.dao';
 export const reimbursementRouter = express.Router();
 
 reimbursementRouter.get(`/author/userId/:userId`, async (req, res) => {

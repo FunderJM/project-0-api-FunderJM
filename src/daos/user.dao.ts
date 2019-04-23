@@ -1,7 +1,7 @@
 import { PoolClient } from 'pg';
 import { connectionPool } from './index.dao';
-import { convertSqlRole } from '../utility/sql-role-converter';
-import { convertSqlUser } from '../utility/sql-user-converter';
+import { convertSqlRole } from '../src/utility/sql-role-converter';
+import { convertSqlUser } from '../src/utility/sql-user-converter';
 
 
 export async function findByUsernameAndPassword(username: string, password: string) {

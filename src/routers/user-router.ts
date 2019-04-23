@@ -1,0 +1,66 @@
+import express from 'express';
+import { authMiddleware } from '../middleware/auth.middleware';
+import { findByUsernameAndPassword, allUsers, findByUserId } from '../../daos/user.dao';
+import { User } from '../../model/user';
+// import bodyParser = require('body-parser');
+
+export const userRouter = express.Router();
+
+userRouter.get('', [
+    authMiddleware(['Finance Manager']),
+    async (req, res) => {
+        const result = await allUsers();
+        res.json(result.rows);
+    }
+]);
+
+userRouter.get('/:id', authMiddleware(['Finance Manager']), async (req, res) => {
+    console.log('finding user with id' + req.params.id);
+    const id: number = +req.params.id;
+    const employee = await findByUserId(id);
+    if (employee) {
+        res.status(200).json(employee);
+    } else {
+        res.sendStatus(404);
+    }
+});
+
+userRouter.post('/login', async (req, res) => {
+    if (req.body) {
+        const username = req.body.username;
+        const password = req.body.password;
+        const attempt = await findByUsernameAndPassword(username, password);
+        console.log(attempt);
+        if (attempt) {
+            req.session.user = attempt;
+            res.json(attempt);
+        } else {
+            res.sendStatus(400);
+        }
+    } else {
+        res.sendStatus(400);
+    }
+});
+
+
+userRouter.patch('', async (req, res) => {
+    const bod = req.body;
+    const tempUser = new User(bod.userid, undefined, undefined, undefined, undefined, undefined, undefined);
+    for (const field in tempUser) {
+        if (bod[field] != undefined) {
+            tempUser[field] = bod[field];
+        }
+    } if (tempUser.userId != undefined) {
+        const updateReturn = await updateUser(tempUser);
+        if (updateReturn) {
+            res.status(202);
+            res.json(updateReturn);
+        }
+        else {
+            res.sendStatus(400);
+        }
+    }
+    else {
+        res.sendStatus(400);
+    }
+});

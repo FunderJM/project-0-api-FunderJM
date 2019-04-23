@@ -1,8 +1,8 @@
 import express from 'express';
 import bodyParser from 'body-parser';
-import { userRouter } from './routers/user-router';
-import { sessionMiddleware } from './middleware/session.middleware';
-import { reimbursementRouter } from './routers/reimbursement-router';
+import { userRouter } from './src/routers/user-router';
+import { sessionMiddleware } from './src/middleware/session.middleware';
+import { reimbursementRouter } from './src/routers/reimbursement-router';
 
 const app = express();
 const port = process.env.PORT || 8080;

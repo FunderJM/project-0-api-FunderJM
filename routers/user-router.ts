@@ -1,5 +1,5 @@
 import express from 'express';
-import { authMiddleware } from '../middleware/auth.middleware';
+import { authMiddleware } from '../src/middleware/auth.middleware';
 import { findByUsernameAndPassword, allUsers, findByUserId } from '../daos/user.dao';
 import { User } from '../model/user';
 // import bodyParser = require('body-parser');

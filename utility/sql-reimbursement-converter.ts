@@ -1,5 +1,5 @@
-import { SqlReimbursement } from '../dto/sql-reimbursement.dto';
-import { reImbursement } from '../model/reimbursement';
+import { SqlReimbursement } from '../../dto/sql-reimbursement.dto';
+import { reImbursement } from '../../model/reimbursement';
 
 
 export function convertSqlReimbursement(reimburse: SqlReimbursement) {

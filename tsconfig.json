@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "outDir": "build/dist",
+    "outDir": "src/build/distt 0/build/dist",
     "module": "commonjs",
     "target": "es5",
     "lib": ["es2018"],
@@ -19,7 +19,7 @@
   },
   "exclude": [
     "node_modules",
-    "build",
+    "src/buildroject 0/build",
     "scripts",
     "styleguide.config.js",
     "docs",
