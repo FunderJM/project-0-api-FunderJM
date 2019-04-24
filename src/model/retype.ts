@@ -1,9 +1,10 @@
-import { reimbursementtype } from "./reimbursementtype";
+export class ReType {
+    typeId: number;
+    reimbtype: string;
 
-
-export let retype : reimbursementtype[] = [
-    new reimbursementtype(1, 'Lodging'),
-    new reimbursementtype(2, 'Travel'),
-    new reimbursementtype(3, 'Food'),
-    new reimbursementtype(4, 'Other')
-]
+    constructor(typeId = 0,
+    reimbtype = '') {
+        this.typeId = typeId;
+        this.reimbtype = reimbtype;
+    }
+}

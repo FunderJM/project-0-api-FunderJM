@@ -1,8 +1,9 @@
-import { reimbursementstatus } from "./reimbursementstatus";
+export class ReStatus {
+    statusId: number;
+    status: string;
 
-
-export let reStatus: reimbursementstatus[] = [
-    new reimbursementstatus(1, 'Pending'),
-    new reimbursementstatus(2, 'Accepted'),
-    new reimbursementstatus(3, 'Denied')
-]
+    constructor(statusId = 0, status = '') {
+        this.statusId = statusId;
+        this.status = status;
+    }
+}

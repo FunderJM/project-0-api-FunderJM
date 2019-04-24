@@ -1,7 +1,7 @@
 import express from 'express';
 import { authMiddleware } from '../middleware/auth.middleware';
-import { findByUsernameAndPassword, allUsers, findByUserId } from '../../daos/user.dao';
-import { User } from '../../model/user';
+import { allUsers, findByUserId, findByUsernameAndPassword } from '../daos/user.dao';
+import { User } from '../build/dist/model/user';
 // import bodyParser = require('body-parser');
 
 export const userRouter = express.Router();
