@@ -1,7 +1,7 @@
 import { PoolClient } from 'pg';
 import { connectionPool } from './index.dao';
-import { convertSqlRole } from '../src/utility/sql-role-converter';
-import { convertSqlUser } from '../src/utility/sql-user-converter';
+import { convertSqlUser } from '../utility/sql-user-converter';
+import { convertSqlRole } from '../utility/sql-role-converter';
 
 
 export async function findByUsernameAndPassword(username: string, password: string) {
@@ -69,6 +69,18 @@ export async function allUsers() {
     }
 }
 
-// export async function updateuser(userId: number, username: string, password: string, firstname: string, lastname: string, email: string, emprole: number){
-//     let client: PoolClient;
-// }
+export async function updateUser(userId: number, username: string, password: string, firstname: string, lastname: string, email: string, emprole: number){
+    let client: PoolClient;
+    try {
+        client = await connectionPool.connect();
+        const queryString = `SELECT firstname, lastname, email FROM project0.employee;`;
+        const result = await client.query(queryString);
+        return result;
+    } catch (err) {
+        console.log(err);
+        console.log(`test2`);
+        return undefined;
+    } finally {
+        client && client.release();
+    }
+}
