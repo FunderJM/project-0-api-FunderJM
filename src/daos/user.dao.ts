@@ -1,7 +1,7 @@
 import { PoolClient } from 'pg';
 import { connectionPool } from './index.dao';
-import { convertSqlUser } from '../utility/sql-user-converter';
-import { convertSqlRole } from '../utility/sql-role-converter';
+import { convertSqlUser } from '../../utility/sql-user-converter';
+import { convertSqlRole } from '../../utility/sql-role-converter';
 
 
 export async function findByUsernameAndPassword(username: string, password: string) {
@@ -69,13 +69,47 @@ export async function allUsers() {
     }
 }
 
-export async function updateUser(userId: number, username: string, password: string, firstname: string, lastname: string, email: string, emprole: number){
+export async function updateUser (userId: number, username: string, password: string, firstname: string, lastname: string, email: string, emprole: number) {
     let client: PoolClient;
     try {
         client = await connectionPool.connect();
-        const queryString = `SELECT firstname, lastname, email FROM project0.employee;`;
-        const result = await client.query(queryString);
-        return result;
+        if (username !== null) {
+            const query = `UPDATE TABLE project0.employee (username)
+            VALUE ($2) WHERE employee.userid = $1;`;
+            const result = await client.query(query, [userId, username]);
+            return result;
+        }
+        if (password !== null) {
+            const query = `UPDATE TABLE project0.employee (password)
+            VALUE ($2) WHERE employee.userid = $1;`;
+            const result = await client.query(query, [userId, password]);
+            return result;
+        }
+        if (firstname !== null) {
+            const query = `UPDATE TABLE project0.employee (firstname)
+            VALUE ($2) WHERE employee.userid = $1;`;
+            const result = await client.query(query, [userId, firstname]);
+            return result;
+        }
+        if (lastname !== null) {
+            const query = `UPDATE TABLE project0.employee (lastname)
+            VALUE ($2) WHERE employee.userid = $1;`;
+            const result = await client.query(query, [userId, lastname]);
+            return result;
+        }
+        if (email !== null) {
+            const query = `UPDATE TABLE project0.employee (email)
+            VALUE ($2) WHERE employee.userid = $1;`;
+            const result = await client.query(query, [userId, email]);
+            return result;
+        }
+        if (emprole !== null) {
+            const query = `UPDATE TABLE project0.employee (emprole)
+            VALUE ($2) WHERE employee.userid = $1;`;
+            const result = await client.query(query, [userId, emprole]);
+            return result;
+        }
+        return userId;
     } catch (err) {
         console.log(err);
         console.log(`test2`);

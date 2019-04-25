@@ -1,5 +1,6 @@
-import { SqlStatus } from '../../dto/sql-status.dto';
-import { ReimbursementStatus } from '../../model/reimbursementstatus';
+import { SqlStatus } from '../src/dto/sql-status.dto';
+import { ReimbursementStatus } from '../src/model/reimbursementstatus';
+
 
 
 export function convertSqlStatus(status: SqlStatus) {
