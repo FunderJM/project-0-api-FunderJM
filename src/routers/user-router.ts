@@ -1,6 +1,8 @@
 import express from 'express';
 import { authMiddleware } from '../middleware/auth.middleware';
-import { findByUsernameAndPassword, allUsers, findByUserId } from '../daos/user.dao';
+import { allUsers, findByUserId, findByUsernameAndPassword, updateUser } from '../daos/user.dao';
+import { User } from '../build/dist/model/user';
+// import bodyParser = require('body-parser');
 
 export const userRouter = express.Router();
 
@@ -36,6 +38,29 @@ userRouter.post('/login', async (req, res) => {
             res.sendStatus(400);
         }
     } else {
+        res.sendStatus(400);
+    }
+});
+
+
+userRouter.patch('', async (req, res) => {
+    const bod = req.body;
+    const tempUser = new User( undefined, undefined, undefined, undefined, undefined, undefined, undefined);
+    for (const field in tempUser) {
+        if (bod[field] != undefined) {
+            tempUser[field] = bod[field];
+        }
+    } if (tempUser.userId != undefined) {
+        const updateReturn = await updateUser(tempUser.userId, tempUser.username, tempUser.password, tempUser.firstname, tempUser.lastname, tempUser.email, tempUser.role);
+        if (updateReturn) {
+            res.status(202);
+            res.json(updateReturn);
+        }
+        else {
+            res.sendStatus(400);
+        }
+    }
+    else {
         res.sendStatus(400);
     }
 });
