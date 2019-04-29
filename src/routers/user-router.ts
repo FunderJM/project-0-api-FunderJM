@@ -26,6 +26,7 @@ userRouter.get('/:id', authMiddleware(['Finance Manager']), async (req, res) => 
 });
 
 userRouter.post('/login', async (req, res) => {
+    console.log(req.body);
     if (req.body) {
         const username = req.body.username;
         const password = req.body.password;
@@ -35,10 +36,10 @@ userRouter.post('/login', async (req, res) => {
             req.session.user = attempt;
             res.json(attempt);
         } else {
-            res.sendStatus(400);
+            res.status(400).send('invalid credentials'); // sendStatus(400);
         }
     } else {
-        res.sendStatus(400);
+        res.status(400).send('Unable to login at this time');
     }
 });
 
