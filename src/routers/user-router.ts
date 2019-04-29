@@ -35,10 +35,10 @@ userRouter.post('/login', async (req, res) => {
             req.session.user = attempt;
             res.json(attempt);
         } else {
-            res.sendStatus(400);
+            res.status(400).send('invalid credentials'); // sendStatus(400);
         }
     } else {
-        res.sendStatus(400);
+        res.status(400).send('Unable to login at this time');
     }
 });
 

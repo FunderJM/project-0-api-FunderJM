@@ -11,7 +11,7 @@ async function login(event) {
   };
 
   try {
-    const resp = await fetch('http://ec2-18-223-252-152.us-east-2.compute.amazonaws.com:8081/login',{
+    const resp = await fetch('http://ec2-18-223-252-152.us-east-2.compute.amazonaws.com:8081/users/login',{
       method: 'POST',
       credentials: 'include',
       body: JSON.stringify(credentials),
